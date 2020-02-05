@@ -11,19 +11,41 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
 
+        int principalAmount = 0;
+        float annualInterestRate = 0;
+        float monthlyInterestRate = 0;
+        byte loanLengthYears = 0;
+        int numberOfPayments = 0;
+
         Scanner scanner = new Scanner ( System.in );
 
-        System.out.print ( "Principal amount: " );
-        int principalAmount = scanner.nextInt ();
+        while (true) {
+            System.out.print ( "Principal amount: " );
+            principalAmount = scanner.nextInt ();
+            if (principalAmount >= 1_000 && principalAmount <= 1_000_000)
+                break;
+            System.out.println ( "Enter a value between 1.000 and 1.000.000" );
+        }
 
-        System.out.print ( "Annual interest rate: " );
-        float annualInterestRate = scanner.nextFloat ();
-        float monthlyInterestRate = annualInterestRate / PERCENT / MONTHS_IN_YEAR;
+        while (true) {
+            System.out.print ( "Annual interest rate: " );
+            annualInterestRate = scanner.nextFloat ();
+            if (annualInterestRate >= 2 && annualInterestRate <= 11) {
+                monthlyInterestRate = annualInterestRate / PERCENT / MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println ( "Enter annual interest rate value between 2 and 11" );
+        }
 
-        System.out.print ( "Period (years): " );
-        byte loanLengthYears = scanner.nextByte ();
-        int numberOfPayments = loanLengthYears * MONTHS_IN_YEAR;
-
+        while (true) {
+            System.out.print ( "Period (years): " );
+            loanLengthYears = scanner.nextByte ();
+            if (loanLengthYears >= 1 && loanLengthYears <= 30) {
+                numberOfPayments = loanLengthYears * MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println ( "Enter a value between 1 and 30" );
+        }
         double mortgage = principalAmount
                 * (monthlyInterestRate * Math.pow ( 1 + monthlyInterestRate, loanLengthYears )
                 / (Math.pow ( 1 + monthlyInterestRate, numberOfPayments ) - 1));
