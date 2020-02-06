@@ -11,11 +11,11 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
 
-        int principalAmount = 0;
-        float annualInterestRate = 0;
-        float monthlyInterestRate = 0;
-        byte loanLengthYears = 0;
-        int numberOfPayments = 0;
+        public int principalAmount = 0;
+        public float annualInterestRate = 0;
+        public float monthlyInterestRate = 0;
+        public byte loanLengthYears = 0;
+        public int numberOfPayments = 0;
 
         Scanner scanner = new Scanner ( System.in );
 
